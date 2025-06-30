@@ -9,6 +9,7 @@ import SettingsTab from "./features/Main/View/settingsTab.jsx";
 import FaqTab from "./features/Main/View/faqTab.jsx";
 import ApplicationsTab from "./features/Main/View/applicationsTab.jsx";
 import StartedCoursesTab from "./features/Main/View/startedCoursesTab.jsx";
+import CourseDetail from "./features/Course Detail/View/courseDetail.jsx";
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route element={<SidebarLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/details/:id" element={<CourseDetail />} />
           <Route path="/fav" element={<FavTab />} />
           <Route path="/contents" element={<IndexTab />} />
           <Route path="/ustazs" element={<UstazsTab />} />

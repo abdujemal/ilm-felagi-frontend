@@ -98,7 +98,7 @@ export default function SidebarLayout() {
               <hr className="my-6 border-t [border-width:0.2px] border-gray-300 dark:border-gray-700" />
               <NavLink to="/about" className={navLinkClass} ><IconInfoCircle className="w-4"/><p>About</p></NavLink>
               <NavLink to="/faq" className={navLinkClass} ><IconHelpOctagon className="w-4"/><p>FAQ</p></NavLink>
-              <NavLink to="/dafklmsdfgklmsdfglkm" className={navLinkClass} ><IconBrandTelegram className="w-4"/><p>Our Platform on Telegram</p></NavLink>
+              <NavLink to="https://t.me/MOhamedAljawi" target="_blank" className={navLinkClass} ><IconBrandTelegram className="w-4"/><p>Our Platform on Telegram</p></NavLink>
               <NavLink to="/applications" className={navLinkClass} ><IconCategory className="w-4"/><p>Applications</p></NavLink>
               <div className="md:hidden ml-3 mr-3">
                 <Button icon={darkMode ? <IconSunFilled/> : <IconMoonStars/>} onClick={toggleTheme}/>
