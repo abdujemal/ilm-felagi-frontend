@@ -1,10 +1,20 @@
-import { categoryUrl, courseUrl, PAGE_SIZE } from "../../../common/consts.js";
+import { courseByCategoryUrl, PAGE_SIZE } from "../../../common/consts";
 
 export const getCourses = async ({queryKey}) => {
     console.log("getCourses called with queryKey:", queryKey);
     
-    const [_key, page] = queryKey;
-    const res = await fetch(`${courseUrl}?page=${page}&limit=${PAGE_SIZE}`, {
+    const [_key, type, val, page] = queryKey;
+
+    switch(type){
+        case("category"):
+        return byCategory(val, page)
+        break;
+    }
+   
+}
+
+const byCategory = async (val, page) =>{
+     const res = await fetch(`${courseByCategoryUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -14,6 +24,10 @@ export const getCourses = async ({queryKey}) => {
           throw new Error("Network response was not ok");
     }
 
+    return combineWithTheSaved(res);
+}
+
+const combineWithTheSaved = async (res) => {
     const savedCoursesStr = localStorage.getItem("courses") ?? "[]";
     const savedCourses = JSON.parse(savedCoursesStr);
     const data = await res.json();
@@ -26,21 +40,5 @@ export const getCourses = async ({queryKey}) => {
         }
         return course;
     });
-
-    return data;
-}
-
-export const getCategories = async ({queryKey}) => {
-    const res = await fetch(categoryUrl, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-    },},)
-
-    if (!res.ok) {
-          throw new Error("Network response was not ok");
-    }
-
-    return res.json()
-    
+    return data
 }

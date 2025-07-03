@@ -1,7 +1,7 @@
-import { mainUrl } from "../../../common/consts.js";
+import { courseUrl } from "../../../common/consts.js";
 
 export const getSingleCourse = async (id) => {
-    const res = await fetch(`${mainUrl}/single/${id}`, {
+    const res = await fetch(`${courseUrl}/single/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

@@ -15,6 +15,8 @@ import { CourseDetailProvider } from "./features/Course Detail/Controller/course
 import PdfPage from "./features/Course Detail/View/pdfPage.jsx";
 import { FavTabProvider } from "./features/Main/Controller/favTabController.jsx";
 import { StartedCourseProvider } from "./features/Main/Controller/startedCourseController.jsx";
+import { ResultProvider } from "./features/Main/Controller/resultController.jsx";
+import ResultPage from "./features/Main/View/resultPage.jsx";
 
 function App() {
   
@@ -23,6 +25,7 @@ function App() {
       <Routes>
         <Route element={<SidebarLayout />}>
           <Route path="/" element={<HomeTabProvider><Home /></HomeTabProvider>} />
+          <Route path="/result" element={ <ResultProvider><ResultPage/></ResultProvider> }/>
           <Route path="/details/:id" element={<CourseDetailProvider><CourseDetail /></CourseDetailProvider>} />
           <Route path="/pdf/:id" element={<CourseDetailProvider><PdfPage /></CourseDetailProvider>} />
           <Route path="/fav" element={<FavTabProvider><FavTab /></FavTabProvider>} />

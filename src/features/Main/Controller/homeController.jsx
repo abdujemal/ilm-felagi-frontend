@@ -19,6 +19,13 @@ export function HomeTabProvider({ children }) {
     
   });
 
+  const { data: category, isLoading: catIsLoading, isError: catIsError } = useQuery({
+    queryKey: ["categories"],
+    queryFn:  Api.getCategories,
+    keepPreviousData: true,
+    
+  });
+
   
   const [Updateddata, setData] = useState(null)
   
@@ -45,7 +52,18 @@ export function HomeTabProvider({ children }) {
 
 
   return (
-    <HomeTabContext.Provider value={{ data: Updateddata, isLoading, isError, saveACourseToFav, error, page, setPage }}>
+    <HomeTabContext.Provider value={{ 
+      data: Updateddata, 
+      isLoading, 
+      isError, 
+      saveACourseToFav, 
+      error, 
+      page, 
+      setPage, 
+      category,
+      catIsError,
+      catIsLoading
+    }}>
       {children}
     </HomeTabContext.Provider>
   );
