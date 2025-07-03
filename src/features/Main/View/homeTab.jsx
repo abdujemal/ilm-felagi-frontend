@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useHomeTab } from "../Controller/homeController.jsx";
 import CourseItem from "./Components/courseItem.jsx";
 import Loading from "./Components/Loading.jsx";
-import { useQuery } from "../../../consts.js";
+import { useQuery } from "../../../common/consts.js";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const { data, isLoading, isError, error, page, setPage } = useHomeTab();
+  const { data, isLoading, isError, error, page, setPage, saveACourseToFav } = useHomeTab();
 
   const query = useQuery();
 
@@ -14,6 +14,10 @@ export default function Home() {
 
   const currentPage = parseInt(query.get("page")) || 1;
   console.log("Current Page:", currentPage);
+
+  useEffect(()=>{
+    document.title = "ዒልም ፈላጊ"
+  })
 
   useEffect(() => {
     setPage(currentPage);
@@ -31,7 +35,13 @@ export default function Home() {
         ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
               {data?.courses.map(course => (
-                <CourseItem key={course._id}  course={course}/>
+                <CourseItem 
+                  key={course._id} 
+                  onFavClick={()=>{
+                    saveACourseToFav(course);
+                  }} 
+                  course={course}
+                />
               ))}
             </div>
         )}

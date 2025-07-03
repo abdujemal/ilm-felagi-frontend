@@ -1,5 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import * as Api from "../Repo/courseDetailRepo.js"; // Adjust the import path as necessary
+import * as Repo from "../../../common/repo.js"
+import toast from 'react-hot-toast';
+import { useAudio } from "../../AudioPlayer/Controller/audioContext.jsx";
 
 const CDContext = createContext()
 
@@ -8,6 +11,8 @@ export const CourseDetailProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [course, setCourse] = useState(null);
+
+  const { audioPlayerRef } = useAudio()
 
   const getCoursesFromLocalStorage = () => {
     const savedCoursesStr = localStorage.getItem("courses") ?? "[]";
@@ -27,6 +32,7 @@ export const CourseDetailProvider = ({ children }) => {
           data.fav = course.fav;
         } 
         setCourse(data);
+        document.title = `${data.title} በ${data.ustaz}`;
         setLoading(false);
       })
       .catch((err) => {
@@ -35,18 +41,18 @@ export const CourseDetailProvider = ({ children }) => {
       });
   }
 
-  const saveCourseToFav = () => {
-    const savedCoursesStr = localStorage.getItem("courses") ?? "[]"
-    var courses = JSON.parse(savedCoursesStr)
-    if(courses.filter((v,i, a) => v._id === course._id).length > 0){
-      console.log("Course already exists in local storage");
-      return;
+  const playFromSec = (seconds) => {
+    const audioEl = audioPlayerRef.current?.audio?.current;
+
+    if (audioEl) {
+      audioEl.currentTime = seconds; // ⏱️ start at 15 seconds
+      audioEl.play();
     }
-    console.log("Saving course to local storage", course);
-    
-    courses = [...courses,{...course, fav: true}];
-    localStorage.setItem("courses", JSON.stringify(courses));
-    console.log("Course saved to local storage");
+  };
+
+  const saveCourseToFav = () => {
+    Repo.saveCourseToFav(course, ()=>{setCourse((prev) => ({ ...prev, fav: !prev.fav }))})
+    toast.success(!course.fav ? "በተሳካ ሁኔታ ተመዝግቧል!" : "በተሳካ ሁኔታ ጠፍቷል!")
   }
 
   return (
@@ -56,7 +62,8 @@ export const CourseDetailProvider = ({ children }) => {
       error, 
       setCourse,
       saveCourseToFav,
-      getSingleCourse
+      getSingleCourse,
+      playFromSec
      }}>
       {children}
     </CDContext.Provider>

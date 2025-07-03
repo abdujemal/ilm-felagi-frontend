@@ -7,7 +7,7 @@ const InfoCard = ({keey, val, icon, isPdf = false, onTap}) => {
       <p className='text-xl'>{keey}</p>
         <div className='flex items-center gap-2'>
             {icon}
-            {val ? isPdf ? <Button text={"ኪታቡን ከፈተው"} onClick={()=>onTap()} isPrimaryColor/> : <p className='text-lg text-gray-700 dark:text-gray-300'>{val}</p> : <p className='text-lg text-gray-700 dark:text-gray-300'>የለም</p>}
+            {val ? isPdf ? <Button text={"ኪታቡን ከፈተው"} onClick={()=>onTap()} isPrimaryColor/> : <p className='text-lg text-gray-700 dark:text-gray-300'>{val === "NaN%" ? "የለም" : val}</p> : <p className='text-lg text-gray-700 dark:text-gray-300'>የለም</p>}
         </div>
         
     </div>

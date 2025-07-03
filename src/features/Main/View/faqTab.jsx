@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const FaqTab = () => {
+  useEffect(()=>{
+    document.title = "FAQ"
+  })
   return (
     <div>
       FaqTab

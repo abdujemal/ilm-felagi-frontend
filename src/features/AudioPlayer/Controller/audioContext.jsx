@@ -48,6 +48,9 @@ export const AudioProvider = ({ children }) => {
 
   const saveCourseProgress = () => {
     console.log("seconds", duration);
+    if(duration === 0) {
+      return;
+    }
     const savedCoursesStr = localStorage.getItem("courses") ?? "[]"
     var courses = JSON.parse(savedCoursesStr)
     if(courses.filter((v,i, a) => v._id === currentCourse._id).length > 0){

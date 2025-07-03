@@ -13,6 +13,8 @@ import CourseDetail from "./features/Course Detail/View/courseDetail.jsx";
 import { HomeTabProvider } from "./features/Main/Controller/homeController.jsx";
 import { CourseDetailProvider } from "./features/Course Detail/Controller/courseDetailController.jsx";
 import PdfPage from "./features/Course Detail/View/pdfPage.jsx";
+import { FavTabProvider } from "./features/Main/Controller/favTabController.jsx";
+import { StartedCourseProvider } from "./features/Main/Controller/startedCourseController.jsx";
 
 function App() {
   
@@ -23,10 +25,10 @@ function App() {
           <Route path="/" element={<HomeTabProvider><Home /></HomeTabProvider>} />
           <Route path="/details/:id" element={<CourseDetailProvider><CourseDetail /></CourseDetailProvider>} />
           <Route path="/pdf/:id" element={<CourseDetailProvider><PdfPage /></CourseDetailProvider>} />
-          <Route path="/fav" element={<FavTab />} />
+          <Route path="/fav" element={<FavTabProvider><FavTab /></FavTabProvider>} />
           <Route path="/contents" element={<IndexTab />} />
           <Route path="/ustazs" element={<UstazsTab />} />
-          <Route path="/started-courses" element={<StartedCoursesTab />} />
+          <Route path="/started-courses" element={ <StartedCourseProvider><StartedCoursesTab /></StartedCourseProvider>} />
           <Route path="/settings" element={<SettingsTab />} />
           <Route path="/faq" element={<FaqTab />} />
           <Route path="/applications" element={<ApplicationsTab />} />

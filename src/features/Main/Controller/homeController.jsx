@@ -1,6 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import * as Api from "../repo/homeRepo.js"; // Adjust the import path as necessary
 import { useQuery } from "@tanstack/react-query";
+import * as Repo from "../../../common/repo.js"
 
 // Create context
 const HomeTabContext = createContext();
@@ -10,6 +11,7 @@ export function HomeTabProvider({ children }) {
 //   const [activeTab, setActiveTab] = useState("home");
   const [page, setPage] = useState(1);
 
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["courses", page],
     queryFn:  Api.getCourses,
@@ -17,25 +19,33 @@ export function HomeTabProvider({ children }) {
     
   });
 
+  
+  const [Updateddata, setData] = useState(null)
+  
+  useEffect(() => {
+    if(data){
+      setData(data)
+    }
+  },[data])
 
-  // const getCourses = ()=>{
-  //   setLoading(true);
-  //   setError(null);
+  const saveACourseToFav = (course) => {
+    Repo.saveCourseToFav(course, () => {
+      // Update the course in the data
+      const updatedCourses = Updateddata.courses.map(c => 
+        c._id === course._id ? { ...c, fav: !course.fav } : c
+      );
+      // Update the data with the new courses
+      const updatedData = {
+        ...data,
+        courses: updatedCourses,
+      };      
+      setData(updatedData);
+    });
+  }
 
-  //   Api.getCourses(page)
-  //     .then((data) => {
-  //       setCourses(data.courses);
-  //       setTotalPages(data.totalPages);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       setError(err.message);
-  //       setLoading(false);
-  //     });
-  // }
 
   return (
-    <HomeTabContext.Provider value={{ data, isLoading, isError, error, page, setPage }}>
+    <HomeTabContext.Provider value={{ data: Updateddata, isLoading, isError, saveACourseToFav, error, page, setPage }}>
       {children}
     </HomeTabContext.Provider>
   );
