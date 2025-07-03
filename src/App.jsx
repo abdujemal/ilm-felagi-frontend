@@ -10,6 +10,9 @@ import FaqTab from "./features/Main/View/faqTab.jsx";
 import ApplicationsTab from "./features/Main/View/applicationsTab.jsx";
 import StartedCoursesTab from "./features/Main/View/startedCoursesTab.jsx";
 import CourseDetail from "./features/Course Detail/View/courseDetail.jsx";
+import { HomeTabProvider } from "./features/Main/Controller/homeController.jsx";
+import { CourseDetailProvider } from "./features/Course Detail/Controller/courseDetailController.jsx";
+import PdfPage from "./features/Course Detail/View/pdfPage.jsx";
 
 function App() {
   
@@ -17,8 +20,9 @@ function App() {
     <BrowserRouter>    
       <Routes>
         <Route element={<SidebarLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/details/:id" element={<CourseDetail />} />
+          <Route path="/" element={<HomeTabProvider><Home /></HomeTabProvider>} />
+          <Route path="/details/:id" element={<CourseDetailProvider><CourseDetail /></CourseDetailProvider>} />
+          <Route path="/pdf/:id" element={<CourseDetailProvider><PdfPage /></CourseDetailProvider>} />
           <Route path="/fav" element={<FavTab />} />
           <Route path="/contents" element={<IndexTab />} />
           <Route path="/ustazs" element={<UstazsTab />} />

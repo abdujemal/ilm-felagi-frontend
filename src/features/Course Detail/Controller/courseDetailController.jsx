@@ -9,12 +9,23 @@ export const CourseDetailProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [course, setCourse] = useState(null);
 
+  const getCoursesFromLocalStorage = () => {
+    const savedCoursesStr = localStorage.getItem("courses") ?? "[]";
+    return JSON.parse(savedCoursesStr);
+  }
+
   const getSingleCourse = (id) => {
     setLoading(true);
     setError(null);
 
     Api.getSingleCourse(id)
       .then((data) => {
+        const course = getCoursesFromLocalStorage().find((v, i, a) => v._id === data._id);
+        if (course) {
+          data.currentIndex = course.currentIndex;
+          data.duration = course.duration;
+          data.fav = course.fav;
+        } 
         setCourse(data);
         setLoading(false);
       })
@@ -24,6 +35,19 @@ export const CourseDetailProvider = ({ children }) => {
       });
   }
 
+  const saveCourseToFav = () => {
+    const savedCoursesStr = localStorage.getItem("courses") ?? "[]"
+    var courses = JSON.parse(savedCoursesStr)
+    if(courses.filter((v,i, a) => v._id === course._id).length > 0){
+      console.log("Course already exists in local storage");
+      return;
+    }
+    console.log("Saving course to local storage", course);
+    
+    courses = [...courses,{...course, fav: true}];
+    localStorage.setItem("courses", JSON.stringify(courses));
+    console.log("Course saved to local storage");
+  }
 
   return (
     <CDContext.Provider value={{ 
@@ -31,6 +55,7 @@ export const CourseDetailProvider = ({ children }) => {
       loading, 
       error, 
       setCourse,
+      saveCourseToFav,
       getSingleCourse
      }}>
       {children}

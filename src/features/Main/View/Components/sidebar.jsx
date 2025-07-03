@@ -7,7 +7,6 @@ import { IconMoonStars,
   IconX, 
   IconMenu2, 
   IconHome, 
-  IconHeart, 
   IconListLetters, 
   IconChalkboardTeacher,
   IconBrandParsinta,
@@ -16,18 +15,22 @@ import { IconMoonStars,
   IconHelpOctagon,
   IconCategory,
   IconBrandTelegram,
+  IconBookmark,
 } from '@tabler/icons-react'
 import Button from "./button";
 import SearchUI from "./search";
+import AudioPlayerUi from "../../../AudioPlayer/View/AudioPlayerUi.jsx";
 
 export default function SidebarLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   const navLinkClass = ({ isActive }) =>
-    `block px-4 py-2 flex gap-1 text-nav-light dark:text-nav-dark rounded hover:bg-gray-200 dark:hover:bg-gray-800 ${
+    `block group px-4 py-2 flex gap-1 text-nav-light dark:text-nav-dark rounded hover:text-primary-light hover:bg-gray-200 dark:hover:bg-gray-800  ${
       isActive ? "bg-gray-300 dark:bg-gray-700 font-semibold" : ""
     }`;
+  
+  const textStyle = "group-hover:text-primary-light dark:group-hover:text-primary-dark";
 
   function toggleTheme() {
     const html = document.documentElement;
@@ -43,9 +46,9 @@ export default function SidebarLayout() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen w-screen dark:bg-bg-dark bg-bg-light text-text-light dark:text-text-dark">
+    <div className="flex flex-col h-screen w-screen overflow-hidden dark:bg-bg-dark bg-bg-light text-text-light dark:text-text-dark">
       {/* AppBar */}
-      <header className="bg-bg1-light sticky w-screen dark:bg-bg1-dark shadow-sm z-20">
+      <header className="bg-bg1-light fixed w-screen dark:bg-bg1-dark shadow-sm z-20">
         <div className="h-16 flex m-auto self-center items-center justify-between px-4 sm:px-6 max-w-screen-2xl">
           <div className="flex flex-1 items-center gap-3">
             <div className="sm:hidden text-gray-700 dark:text-white">
@@ -73,8 +76,8 @@ export default function SidebarLayout() {
         </div>
       </header>
 
-      <div className="w-screen overflow-hidden">
-        <div className="flex overflow-hidden max-w-screen-2xl m-auto h-full">
+      <div className="w-screen pt-16 flex flex-col overflow-hidden">
+        <div className=" flex flex-1 overflow-hidden max-w-screen-2xl m-auto w-full h-full">
           {/* Sidebar (mobile: animated, desktop: static) */}
           <aside
             className={clsx(
@@ -88,18 +91,18 @@ export default function SidebarLayout() {
             )}
           >
             <nav className="space-y-2">
-              <NavLink to="/" end className={navLinkClass}><IconHome className="w-4"/><p>Home</p></NavLink>
-              <NavLink to="/fav" className={navLinkClass} ><IconHeart className="w-4"/><p>Fav</p></NavLink>
-              <NavLink to="/contents" className={navLinkClass} ><IconListLetters className="w-4"/><p>Contents</p></NavLink>
-              <NavLink to="/ustazs" className={navLinkClass} ><IconChalkboardTeacher className="w-4"/><p>Ustazs</p></NavLink>
-              <NavLink to="/started-courses" className={navLinkClass} ><IconBrandParsinta className="w-4"/><p>Started Courses</p></NavLink>
-              <NavLink to="/settings" className={navLinkClass} ><IconSettings className="w-4"/><p>Settings</p></NavLink>
+              <NavLink to="/" end className={navLinkClass}><IconHome className={`w-4 ${textStyle}`}/><p className={textStyle}>Home</p></NavLink>
+              <NavLink to="/fav" className={navLinkClass} ><IconBookmark className={`w-4 ${textStyle}`}/><p className={textStyle}>Fav</p></NavLink>
+              <NavLink to="/contents" className={navLinkClass} ><IconListLetters className={`w-4 ${textStyle}`}/><p className={textStyle}>Contents</p></NavLink>
+              <NavLink to="/ustazs" className={navLinkClass} ><IconChalkboardTeacher className={`w-4 ${textStyle}`}/><p className={textStyle}>Ustazs</p></NavLink>
+              <NavLink to="/started-courses" className={navLinkClass} ><IconBrandParsinta className={`w-4 ${textStyle}`}/><p className={textStyle}>Started Courses</p></NavLink>
+              <NavLink to="/settings" className={navLinkClass} ><IconSettings className={`w-4 ${textStyle}`}/><p className={textStyle}>Settings</p></NavLink>
               {/* <hr className="border border-nav-light dark:border-nav-dark"/> */}
               <hr className="my-6 border-t [border-width:0.2px] border-gray-300 dark:border-gray-700" />
-              <NavLink to="/about" className={navLinkClass} ><IconInfoCircle className="w-4"/><p>About</p></NavLink>
-              <NavLink to="/faq" className={navLinkClass} ><IconHelpOctagon className="w-4"/><p>FAQ</p></NavLink>
-              <NavLink to="https://t.me/MOhamedAljawi" target="_blank" className={navLinkClass} ><IconBrandTelegram className="w-4"/><p>Our Platform on Telegram</p></NavLink>
-              <NavLink to="/applications" className={navLinkClass} ><IconCategory className="w-4"/><p>Applications</p></NavLink>
+              <NavLink to="/about" className={navLinkClass} ><IconInfoCircle className={`w-4 ${textStyle}`}/><p className={textStyle}>About</p></NavLink>
+              <NavLink to="/faq" className={navLinkClass} ><IconHelpOctagon className={`w-4 ${textStyle}`}/><p className={textStyle}>FAQ</p></NavLink>
+              <NavLink to="https://t.me/MOhamedAljawi" target="_blank" className={navLinkClass} ><IconBrandTelegram className={`w-4 ${textStyle}`}/><p className={textStyle}>Our Platform on Telegram</p></NavLink>
+              <NavLink to="/applications" className={navLinkClass} ><IconCategory className={`w-4 ${textStyle}`}/><p className={textStyle}>Applications</p></NavLink>
               <div className="md:hidden ml-3 mr-3">
                 <Button icon={darkMode ? <IconSunFilled/> : <IconMoonStars/>} onClick={toggleTheme}/>
               </div>
@@ -110,6 +113,9 @@ export default function SidebarLayout() {
           <main className="flex-1 pt-5 overflow-y-auto scrollbar-hide bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark p-5">
             <Outlet />
           </main>
+        </div>
+        <div className=" w-full bg-bg1-light dark:bg-bg1-dark z-50 ">
+          <AudioPlayerUi/>
         </div>
       </div>
     </div>

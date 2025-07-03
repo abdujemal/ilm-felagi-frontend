@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .dark .rhap_time {
+    color: theme('colors.gray.200'); /* or text-white */
+  }
+
+  .dark .rhap_current-time,
+  .dark .rhap_total-time {
+    color: theme('colors.gray.300'); /* optional */
+  }
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
