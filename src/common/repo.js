@@ -30,7 +30,7 @@ export const saveCourseToFav = (course, onFinish) => {
 
 export const MyApi = (url, type = "GET") => {
   return fetch(url, {
-      method: "GET",
+      method: type,
       headers: {
           "Content-Type": "application/json",
       },
