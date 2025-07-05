@@ -11,7 +11,7 @@ export function FavTabProvider({ children }) {
         setLoading(true);
         const CoursesStr = localStorage.getItem("courses") ?? "[]";
         const courses = JSON.parse(CoursesStr);
-        setCourses([...courses].filter((course) => course.fav === true).reverse);
+        setCourses([...courses].filter((course) => course.fav === true).reverse());
         setLoading(false);
     }
 
