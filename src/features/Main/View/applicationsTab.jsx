@@ -18,7 +18,7 @@ const ApplicationsTab = () => {
     <div>
       <h1 className='text-2xl'>አፕልኬሽኖች</h1>
       <div className=' flex bg-card pt-10 md:p-10 justify-evenly'>
-            <div className='bg-card-light p-24 gap-2 rounded-2xl shadow-lg flex flex-col items-center justify-center dark:bg-card-dark'>
+            <div className='bg-card-light p-10 md:p-24 gap-2 rounded-2xl shadow-lg flex flex-col items-center justify-center dark:bg-card-dark'>
               <div className='p-4 rounded-full border'>
                 <img
                   src="/app_logo.jpg"
@@ -30,9 +30,10 @@ const ApplicationsTab = () => {
               <h3 className='text-2xl'>ዒልም ፈላጊ</h3>
               
               {
-                apps.map(app => 
+                apps.map((app, i) => 
                   app.url ?
                   <a
+                    key={i}
                     href={app.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -44,6 +45,7 @@ const ApplicationsTab = () => {
                     />
                   </a>
                   : <img
+                      key={i}
                       src={app.src}
                       alt={app.alt}
                       className="h-24"

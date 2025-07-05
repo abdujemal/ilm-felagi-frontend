@@ -68,8 +68,7 @@ export default function SidebarLayout() {
               </div>
             </NavLink>
             <SearchUI/>
-            {/* <h1 className="text-xl font-bold text-gray-800 dark:text-white">🌟 MyApp</h1> */}
-          </div>
+           </div>
           <div className=" hidden md:block ml-3 mr-3">
             <Button icon={darkMode ? <IconSunFilled/> : <IconMoonStars/>} onClick={toggleTheme}/>
           </div>
@@ -82,7 +81,7 @@ export default function SidebarLayout() {
           <aside
             className={clsx(
               "sm:block sm:w-64 z-30 pt-5 sm:z-auto p-4",
-              "sm:relative absolute z-30 h-screen transition-all duration-300 ease-in-out",
+              "sm:relative absolute z-30 h-4/5 transition-all duration-300 ease-in-out",
               {
                 "w-64 bg-card-light dark:bg-card-dark opacity-100 animate-in fade-in slide-in-from-left": sidebarOpen,
                 "w-0 opacity-0 pointer-events-none md:pointer-events-auto": !sidebarOpen,
