@@ -1,12 +1,9 @@
 import { courseUrl } from "../../../common/consts.js";
+import { MyApi } from "../../../common/repo.js";
 
 export const getSingleCourse = async (id) => {
-    const res = await fetch(`${courseUrl}/single/${id}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
+    
+    const res = await MyApi(`${courseUrl}/single/${id}`);
 
     if (!res.ok) {
         throw new Error("Network response was not ok");

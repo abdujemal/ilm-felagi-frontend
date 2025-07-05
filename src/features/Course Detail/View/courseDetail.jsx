@@ -34,17 +34,26 @@ const CourseDetail = () => {
         getSingleCourse,
         saveCourseToFav,
         playFromSec,
+        
      } = useCourseDetail(); // Assuming useCourseDetail is a custom hook that fetches course details
 
     useEffect(() => {           
+        console.log({data});
         if (!data) {
             getSingleCourse(id);
-            
         } else {
             document.title = `${data.title} በ${data.ustaz}`;
-            setCourse(data);
+            setTimeout(()=>{
+                setCourse(data);
+                console.log("set course(data)");      
+            }, 1000)
         }
-    }, [id, data]);
+    }, []);
+
+    useEffect(()=>{
+        console.log({course});
+            
+    }, [course])
 
     useEffect(() => {
         console.log("Current course:", currentCourse);
@@ -77,7 +86,7 @@ const CourseDetail = () => {
     
     return (
         <div className='w-full h-full'>
-            {loading ? (
+            {loading || course == null ? (
                 <div className="flex items-center w-full justify-center h-screen text-gray-500"><Loading/></div>
             ) : error ? (
                 <div className="text-center text-red-500">{error}</div>

@@ -54,12 +54,12 @@ export const AudioProvider = ({ children }) => {
     const savedCoursesStr = localStorage.getItem("courses") ?? "[]"
     var courses = JSON.parse(savedCoursesStr)
     if(courses.filter((v,i, a) => v._id === currentCourse._id).length > 0){
-      courses = courses.map((v,i)=> v._id === currentCourse._id ? {...v, currentIndex: currentIndex, duration: duration,} : v)//[...courses,{...currentCourse, currentIndex: currentIndex, duration: duration,}];
+      courses = courses.map((v,i)=> v._id === currentCourse._id ? {...v, dateTime: new Date(), currentIndex: currentIndex, duration: duration,} : v)//[...courses,{...currentCourse, currentIndex: currentIndex, duration: duration,}];
       setCurrentCourse({...currentCourse, currentIndex: currentIndex, duration: duration,});
       localStorage.setItem("courses", JSON.stringify(courses));
       return;
     }
-    courses = [...courses,{...currentCourse, currentIndex: currentIndex, duration: duration,}];
+    courses = [...courses,{...currentCourse, dateTime: new Date(), currentIndex: currentIndex, duration: duration,}];
     localStorage.setItem("courses", JSON.stringify(courses));
 
     //seting current course

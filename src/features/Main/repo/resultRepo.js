@@ -1,4 +1,5 @@
 import { courseByCategoryUrl, courseByTitleUrl, courseByUstazUrl, PAGE_SIZE } from "../../../common/consts";
+import { MyApi } from "../../../common/repo";
 
 export const getCourses = async ({queryKey}) => {
     console.log("getCourses called with queryKey:", queryKey);
@@ -17,11 +18,7 @@ export const getCourses = async ({queryKey}) => {
 }
 
 const byCategory = async (val, page) =>{
-     const res = await fetch(`${courseByCategoryUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },},);
+     const res = await MyApi(`${courseByCategoryUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`);
 
    if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -31,11 +28,7 @@ const byCategory = async (val, page) =>{
 }
 
 const byUstaz = async (val, page) =>{
-     const res = await fetch(`${courseByUstazUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },},);
+     const res = await MyApi(`${courseByUstazUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`);
 
    if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -45,11 +38,7 @@ const byUstaz = async (val, page) =>{
 }
 
 const byTitle = async (val, page) =>{
-     const res = await fetch(`${courseByTitleUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },},);
+     const res = await MyApi(`${courseByTitleUrl}/${val}?page=${page}&limit=${PAGE_SIZE}`);
 
    if (!res.ok) {
           throw new Error("Network response was not ok");

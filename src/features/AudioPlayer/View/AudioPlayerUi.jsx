@@ -50,7 +50,6 @@ const AudioPlayerUi = () => {
 
         {/* Audio player */}
         <AudioPlayer
-            
             ref={audioPlayerRef}
             src={currentTrack?.url}
             autoPlay
@@ -61,7 +60,6 @@ const AudioPlayerUi = () => {
             onClickPrevious={()=>prevTrack()}
             onEnded={nextTrack}
             header={`${currentTrack?.title} በ${currentTrack?.ustaz}`}
-            
             style={
               {
                 border: "0",

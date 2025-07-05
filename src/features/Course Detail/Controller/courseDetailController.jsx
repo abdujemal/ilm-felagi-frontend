@@ -63,7 +63,8 @@ export const CourseDetailProvider = ({ children }) => {
       setCourse,
       saveCourseToFav,
       getSingleCourse,
-      playFromSec
+      playFromSec,
+      
      }}>
       {children}
     </CDContext.Provider>

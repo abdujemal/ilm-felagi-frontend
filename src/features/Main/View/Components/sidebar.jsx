@@ -94,7 +94,7 @@ export default function SidebarLayout() {
               <NavLink to="/fav" className={navLinkClass} ><IconBookmark className={`w-4 ${textStyle}`}/><p className={textStyle}>Fav</p></NavLink>
               {/* <NavLink to="/contents" className={navLinkClass} ><IconListLetters className={`w-4 ${textStyle}`}/><p className={textStyle}>Contents</p></NavLink> */}
               <NavLink to="/ustazs" className={navLinkClass} ><IconChalkboardTeacher className={`w-4 ${textStyle}`}/><p className={textStyle}>Ustazs</p></NavLink>
-              <NavLink to="/started-courses" className={navLinkClass} ><IconBrandParsinta className={`w-4 ${textStyle}`}/><p className={textStyle}>Started Courses</p></NavLink>
+              <NavLink to="/startedCourses" className={navLinkClass} ><IconBrandParsinta className={`w-4 ${textStyle}`}/><p className={textStyle}>Started Courses</p></NavLink>
               {/* <NavLink to="/settings" className={navLinkClass} ><IconSettings className={`w-4 ${textStyle}`}/><p className={textStyle}>Settings</p></NavLink> */}
               {/* <hr className="border border-nav-light dark:border-nav-dark"/> */}
               <hr className="my-6 border-t [border-width:0.2px] border-gray-300 dark:border-gray-700" />

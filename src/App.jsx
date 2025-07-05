@@ -31,7 +31,7 @@ function App() {
           <Route path="/fav" element={<FavTabProvider><FavTab /></FavTabProvider>} />
           <Route path="/contents" element={<IndexTab />} />
           <Route path="/ustazs" element={<UstazsTab />} />
-          <Route path="/started-courses" element={ <StartedCourseProvider><StartedCoursesTab /></StartedCourseProvider>} />
+          <Route path="/startedCourses" element={ <StartedCourseProvider><StartedCoursesTab /></StartedCourseProvider>} />
           <Route path="/settings" element={<SettingsTab />} />
           <Route path="/faq" element={<FaqTab />} />
           <Route path="/applications" element={<ApplicationsTab />} />

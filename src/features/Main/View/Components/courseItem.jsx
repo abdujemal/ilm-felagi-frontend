@@ -33,7 +33,7 @@ const CourseItem = ({course, onFavClick}) => {
                   <img
                       src={course.image}
                       alt={course.title}
-                      onClick={()=>navigate(`/details/${course._id}`, { state: course })} 
+                      onClick={()=>navigate(`/details/${course._id}`, { state: { course } })} 
                       className="max-h-full max-w-full cursor-pointer object-contain rounded transition-transform duration-300 ease-in-out group-hover:scale-125"
                   />
                 </div>

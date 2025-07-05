@@ -11,7 +11,9 @@ export function StartedCourseProvider({ children }) {
         setLoading(true);
         const CoursesStr = localStorage.getItem("courses") ?? "[]";
         const courses = JSON.parse(CoursesStr);
-        setCourses(courses.filter((course) => course.duration));
+        var startedCourses = courses.filter((course) => course.duration);
+        startedCourses = [...startedCourses].sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime))
+        setCourses(startedCourses);
         setLoading(false);
     }
 

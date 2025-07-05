@@ -39,7 +39,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold">ምድቦች</h1>
           <div className={`pt-4 flex flex-wrap gap-2 ${ showAllCategory ? "" : "h-16" } overflow-hidden`}>
             {
-              category.map((category, index)=>
+              category?.map((category, index)=>
                 <div key={index} onClick={()=>navigate(`/result?category=${category.name}`)} className="cursor-pointer border border-nav-light dark:border-nav-dark hover:border-primary-light hover:dark:border-primary-dark hover:text-primary-light hover:dark:text-primary-dark pt-2 pb-2 pr-3 pl-3 rounded-xl bg-card-light dark:bg-card-dark">
                   {category.name}
                 </div>
