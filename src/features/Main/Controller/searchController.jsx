@@ -1,31 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import * as Api from "../repo/resultRepo.js"; // Adjust the import path as necessary
 import * as Repo from "../../../common/repo.js"
 import toast from "react-hot-toast";
 
 // Create context
-const ResultContext = createContext();
+const SearchContext = createContext();
 
 // Provider
-export function ResultProvider({ children }) {
+export function SearchProvider({ children }) {
 //   const [activeTab, setActiveTab] = useState("home");
   const [page, setPage] = useState(1);
-
-  // const { category } = useQuery(); 
-
-  // const { data, isLoading, isError, error } = useQuery({
-  //   queryKey: ["result", "category" , category, page, ],
-  //   queryFn:  Api.getCourses,
-  //   keepPreviousData: true,
-  // });
   
   const [Updateddata, setData] = useState(null)
-  
-  // useEffect(() => {
-  //   if(data){
-  //     setData(data)
-  //   }
-  // },[data])
 
   const saveACourseToFav = (course, data) => {
     Repo.saveCourseToFav(course, () => {
@@ -46,18 +31,17 @@ export function ResultProvider({ children }) {
 
 
   return (
-    <ResultContext.Provider value={{ 
-     
-      saveACourseToFav, 
+    <SearchContext.Provider value={{ 
       Updateddata,
+      saveACourseToFav, 
       setData,
       page, 
       setPage, 
     }}>
       {children}
-    </ResultContext.Provider>
+    </SearchContext.Provider>
   );
 }
 
 // Custom hook
-export const useResult = () => useContext(ResultContext);
+export const useSearch = () => useContext(SearchContext);

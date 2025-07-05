@@ -1,11 +1,12 @@
 import { useLocation } from "react-router-dom";
 
 // urls
-export const mainUrl = "https://api.ilmfelagi.com/api/v1"
+// export const mainUrl = "https://api.ilmfelagi.com/api/v1"
 // export const mainUrl = "https://www.ilmfelagi.com/api/v1";
-// export const mainUrl = "http://localhost:3000/api/v1";
+export const mainUrl = "http://localhost:3000/api/v1";
 
 export const courseUrl = `${mainUrl}/courses`;
+export const searchCourseUrl = `${mainUrl}/courses/search`;
 export const categoryUrl = `${mainUrl}/categories`;
 export const ustazUrl = `${mainUrl}/ustazs`;
 export const faqUrl = `${mainUrl}/faq`;

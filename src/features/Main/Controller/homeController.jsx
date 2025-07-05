@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import * as Api from "../repo/homeRepo.js"; // Adjust the import path as necessary
 import { useQuery } from "@tanstack/react-query";
 import * as Repo from "../../../common/repo.js"
+import toast from "react-hot-toast";
 
 // Create context
 const HomeTabContext = createContext();
@@ -47,6 +48,7 @@ export function HomeTabProvider({ children }) {
         courses: updatedCourses,
       };      
       setData(updatedData);
+      toast.success("በተሳካ ሁኔታ ተመዝግቧል!")
     });
   }
 

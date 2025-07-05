@@ -1,14 +1,14 @@
-import { categoryUrl, courseUrl, PAGE_SIZE, searchCourseUrl } from "../../../common/consts.js";
-import { MyApi } from "../../../common/repo.js";
+import { PAGE_SIZE, searchCourseUrl } from "../../../common/consts";
+import { MyApi } from "../../../common/repo";
 
-export const getCourses = async ({queryKey}) => {
+export const searchCourses = async ({queryKey}) => {
     console.log("getCourses called with queryKey:", queryKey);
     
-    const [_key, page] = queryKey;
-    const res = await MyApi(`${courseUrl}?page=${page}&limit=${PAGE_SIZE}`);
+    const [_key, query, page] = queryKey;
+     const res = await MyApi(`${searchCourseUrl}?q=${query}&page=${page}&limit=${PAGE_SIZE}`);
 
    if (!res.ok) {
-          throw new Error("Network response was not ok");
+        throw new Error("Network response was not ok");
     }
 
     const savedCoursesStr = localStorage.getItem("courses") ?? "[]";
@@ -25,15 +25,4 @@ export const getCourses = async ({queryKey}) => {
     });
 
     return data;
-}
-
-export const getCategories = async ({queryKey}) => {
-    const res = await MyApi(categoryUrl)
-
-    if (!res.ok) {
-          throw new Error("Network response was not ok");
-    }
-
-    return res.json()
-    
 }

@@ -13,6 +13,8 @@ export default function ResultPage() {
     page, 
     setPage, 
     saveACourseToFav, 
+    Updateddata,
+    setData
     } = useResult();
 
   const query = useUrl();
@@ -43,6 +45,12 @@ export default function ResultPage() {
     keepPreviousData: true,
   });
 
+    useEffect(() => {
+        if(data){
+          setData(data)
+        }
+    },[data])
+
   const navigate = useNavigate();
 
   const currentPage = parseInt(query.get("page")) || 1;
@@ -69,11 +77,11 @@ export default function ResultPage() {
           <div className=" h-3/4 flex items-center justify-center">ምንም የለም</div>
         ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-2 md:p-4">
-              {data?.courses.map(course => (
+              {Updateddata?.courses.map(course => (
                 <CourseItem 
                   key={course._id} 
                   onFavClick={()=>{
-                    saveACourseToFav(course);
+                    saveACourseToFav(course, data);
                   }} 
                   course={course}
                 />

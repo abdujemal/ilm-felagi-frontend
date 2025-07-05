@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
-    <div className="p-4 text-red-700 bg-red-100 rounded">
+    <div className="p-4 text-red-700 w-screen bg-red-100 rounded">
       <h2>Something went wrong:</h2>
       <pre>{error.message}</pre>
       <button
