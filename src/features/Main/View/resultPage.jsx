@@ -59,7 +59,7 @@ export default function ResultPage() {
 
   return <div className="p-2 md:p-4 flex flex-col h-screen">
     <div className="flex-1 ">
-      <h1 className="text-2xl pt-4 font-bold">{getVal()}</h1>
+      <h1 className="text-2xl pt-4 font-bold pb-2">{getVal()}</h1>
       {
         isLoading ? (
           <div className=" h-3/4 flex items-center justify-center"><Loading/></div>

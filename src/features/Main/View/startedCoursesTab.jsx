@@ -14,7 +14,7 @@ function StartedCoursesTab() {
   return (
      <div className="p-4 flex flex-col h-screen">
       <div className="flex-1 ">
-        <h1 className="text-2xl font-bold">የተጀመሩ ደርሶች</h1>
+        <h1 className="text-2xl font-bold pb-2">የተጀመሩ ደርሶች</h1>
         {
           loading ? (
             <div className=" h-3/4 flex items-center justify-center"><Loading/></div>
