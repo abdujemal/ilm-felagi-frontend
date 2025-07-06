@@ -76,7 +76,7 @@ export default function SidebarLayout() {
   }, [sidebarOpen, setSidebarOpen]);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden dark:bg-bg-dark bg-bg-light text-text-light dark:text-text-dark">
+    <div className="flex relative flex-col h-screen w-screen overflow-hidden dark:bg-bg-dark bg-bg-light text-text-light dark:text-text-dark">
       {/* AppBar */}
       <header className="bg-bg1-light fixed w-screen dark:bg-bg1-dark shadow-sm z-20">
         <div className="h-16 flex m-auto self-center items-center justify-between px-4 sm:px-6 max-w-screen-2xl">
