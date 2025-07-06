@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import clsx from "clsx"; // optional for cleaner class toggling
 // import { Moon, Sun, X,   Menu, Home, Heart, AlignLeft, } from "lucide-react";
 import { IconMoonStars, 
@@ -45,6 +45,36 @@ export default function SidebarLayout() {
     setDarkMode(theme === "dark");
   }, []);
 
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Scroll to top when the route changes
+    console.log("sdghj sdfgkj hsdfgkjh ");
+    
+    setTimeout(()=>{
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 3000,)
+    
+  }, [pathname]);
+
+  const drawerRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+        setSidebarOpen((prev) => !prev)
+      }
+    }
+
+    if (sidebarOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sidebarOpen, setSidebarOpen]);
+
   return (
     <div className="flex flex-col h-screen w-screen overflow-hidden dark:bg-bg-dark bg-bg-light text-text-light dark:text-text-dark">
       {/* AppBar */}
@@ -75,13 +105,14 @@ export default function SidebarLayout() {
         </div>
       </header>
 
-      <div className="w-screen pt-16 flex flex-col overflow-hidden">
+      <div className="w-screen h-full pt-16 flex flex-col overflow-hidden">
         <div className=" flex flex-1 overflow-hidden max-w-screen-2xl m-auto w-full h-full">
           {/* Sidebar (mobile: animated, desktop: static) */}
           <aside
+            ref={drawerRef}
             className={clsx(
               "sm:block sm:w-64 z-30 pt-5 sm:z-auto p-4",
-              "sm:relative absolute z-30 h-4/5 transition-all duration-300 ease-in-out",
+              "sm:relative absolute z-30 h-full transition-all duration-300 ease-in-out",
               {
                 "w-64 bg-card-light dark:bg-card-dark opacity-100 animate-in fade-in slide-in-from-left": sidebarOpen,
                 "w-0 opacity-0 pointer-events-none md:pointer-events-auto": !sidebarOpen,
@@ -109,7 +140,7 @@ export default function SidebarLayout() {
           </aside>
 
           {/* Main content */}
-          <main className="flex-1 pt-5 overflow-y-auto scrollbar-hide bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark p-5">
+          <main className="flex-1 pt-5 h-full bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark p-5">
             <Outlet />
           </main>
         </div>

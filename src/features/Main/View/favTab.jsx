@@ -13,7 +13,7 @@ function FavTab() {
 
 
   return (
-    <div className="p-4 flex flex-col h-screen">
+    <div className="p-4 flex flex-col overflow-auto scrollbar-hide h-full">
       <div className="flex-1 ">
         <h1 className="text-2xl font-bold pb-2">የተመረጡ ደርሶች</h1>
         {

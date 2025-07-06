@@ -30,7 +30,7 @@ export default function Home() {
     // getCourses();
   }, [currentPage]);
 
-  return <div className="p-2 md:p-4 flex flex-col h-screen">
+  return <div className="p-2 md:p-4 flex  flex-col overflow-auto scrollbar-hide h-full">
     <div className="flex-1 ">
       {
         catIsLoading ? <></> :

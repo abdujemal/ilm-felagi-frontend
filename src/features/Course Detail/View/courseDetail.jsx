@@ -85,7 +85,7 @@ const CourseDetail = () => {
 
     
     return (
-        <div className='w-full h-full'>
+        <div className='w-full overflow-auto scrollbar-hide h-full'>
             {loading || course == null ? (
                 <div className="flex items-center w-full justify-center h-screen text-gray-500"><Loading/></div>
             ) : error ? (

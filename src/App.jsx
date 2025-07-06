@@ -23,7 +23,7 @@ import { SearchProvider } from "./features/Main/Controller/searchController.jsx"
 function App() {
   
   return (
-    <BrowserRouter>    
+    <BrowserRouter> 
       <Routes>
         <Route element={<SidebarLayout />}>
           <Route path="/" element={<HomeTabProvider><Home /></HomeTabProvider>} />

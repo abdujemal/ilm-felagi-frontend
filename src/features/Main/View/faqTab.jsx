@@ -16,9 +16,9 @@ const FaqTab = () => {
   })
 
   return (
-    <div className="p-4 flex flex-col h-screen">
+    <div className="p-4 flex flex-col overflow-auto scrollbar-hide h-full">
       <div className="flex-1 ">
-        <h1 className="text-2xl font-bold pb-2">FQA</h1>
+        <h1 className="text-2xl font-bold pb-2">FAQ</h1>
         {
           isLoading ? (
             <div className=" h-3/4 flex items-center justify-center"><Loading/></div>

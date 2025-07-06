@@ -54,7 +54,7 @@ const CourseItem = ({course, onFavClick}) => {
                   <LinearProgress value={calculatePercentage()}/>
                 </div>
 
-                <div className='bg-white dark:bg-gray-800 absolute top-0 left-0 pl-2 pr-2 rounded-tl-xl rounded-br-md border border-primary-light dark:border-primary-dark z-10 flex items-center justify-center gap-1'>
+                <div onClick={()=>navigate(`/result?category=${course.category}`)} className='bg-white hover:text-primary-light dark:bg-gray-800 absolute top-0 left-0 pl-2 pr-2 rounded-tl-xl rounded-br-md border border-primary-light dark:border-primary-dark z-10 flex items-center justify-center gap-1'>
                   {/* <p >{String(course.courseIds).split(",").length}</p>
                   <IconMicrophone className='w-4'/> */}
                   {course.category}
@@ -69,7 +69,7 @@ const CourseItem = ({course, onFavClick}) => {
             {/* Text Content */}
             <div className=" flex  pt-2 pb-2 px-4">
               <div className=' flex-1'>
-                <h3 onClick={()=>navigate(`/result?title=${course.title}`)} className="text-lg cursor-pointer hover:text-primary-light hover:dark:text-primary-dark hover:underline font-semibold mb-1 text-gray-900 dark:text-white">
+                <h3 onClick={()=>navigate(`/details/${course._id}`, {state: {course}})} className="text-lg cursor-pointer hover:text-primary-light hover:dark:text-primary-dark hover:underline font-semibold mb-1 text-gray-900 dark:text-white">
                   {course.title}
                 </h3>
                 <p onClick={()=>navigate(`/result?ustaz=${course.ustaz}`)} className="text-sm cursor-pointer hover:text-primary-light hover:dark:text-primary-dark hover:underline text-gray-600 dark:text-gray-300">በ{course.ustaz}</p>
