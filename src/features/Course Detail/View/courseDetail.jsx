@@ -144,7 +144,11 @@ const CourseDetail = () => {
                                     onTap={()=>{
                                         console.log("Playing track at index:", index);
                                         console.log("Current playlist:", playlist);
-                                        StartPlaying(index);
+                                        if(currentCourse != null && currentCourse?._id == course?._id){
+                                            setCurrentIndex(index)
+                                        }else{
+                                            StartPlaying(index)
+                                        }
                                     }} 
                                     isPlaying={isPlaying}
                                     isActive={currentCourse?._id == course?._id && currentIndex == index}
