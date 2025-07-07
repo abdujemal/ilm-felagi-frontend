@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import * as Api from "../repo/searchRepo.js"; // Adjust the import path as necessary
 import { useQuery } from "@tanstack/react-query";
 import { useSearch } from "../Controller/searchController.jsx";
+import { Helmet } from "react-helmet";
 
 
 export default function SearchPage() {
@@ -19,6 +20,7 @@ export default function SearchPage() {
 
     const query = useUrl();
 
+
     const { data, isLoading, isError, error } = useQuery({
         queryKey: [
         "search", 
@@ -28,6 +30,10 @@ export default function SearchPage() {
         queryFn:  Api.searchCourses,
         keepPreviousData: true,
     });
+
+    useEffect(()=>{
+        document.title = `${query.get("q")} - ዒልም ፈላጊ Search`
+    })
 
     useEffect(() => {
         if(data){
@@ -40,9 +46,6 @@ export default function SearchPage() {
     const currentPage = parseInt(query.get("page")) || 1;
     console.log("Current Page:", currentPage);
 
-    useEffect(()=>{
-        document.title = "ዒልም ፈላጊ"
-    })
 
     useEffect(() => {
         setPage(currentPage);
@@ -50,6 +53,10 @@ export default function SearchPage() {
     }, [currentPage]);
 
     return <div className="p-2 md:p-4 flex flex-col overflow-auto scrollbar-hide h-full">
+        <Helmet>
+            <title>ዒልም ፈላጊ</title>
+            <meta name="description" content="ተቀርተው ያለቁ ደርሶች በሱና ኡስታዞች በአማረኛ። ዐቂዳ፣ ሀዲስ፣ ፊቅሂ ወዘተ..." />
+        </Helmet>
         <div className="flex-1 ">
         <h1 className="text-2xl pt-4 font-bold pb-2">Search result for {query.get("q")}</h1>
         {

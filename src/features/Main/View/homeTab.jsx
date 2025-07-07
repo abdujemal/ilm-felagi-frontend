@@ -4,7 +4,7 @@ import CourseItem from "./Components/courseItem.jsx";
 import Loading from "./Components/Loading.jsx";
 import {  useUrl } from "../../../common/consts.js";
 import { useNavigate } from "react-router-dom";
-import Button from "./Components/button.jsx";
+import { Helmet } from 'react-helmet';
 import { IconArrowDown, IconArrowUp } from "@tabler/icons-react";
 
 export default function Home() {
@@ -21,9 +21,6 @@ export default function Home() {
   const currentPage = parseInt(query.get("page")) || 1;
   console.log("Current Page:", currentPage);
 
-  useEffect(()=>{
-    document.title = "ዒልም ፈላጊ"
-  })
 
   useEffect(() => {
     setPage(currentPage);
@@ -31,6 +28,10 @@ export default function Home() {
   }, [currentPage]);
 
   return <div className="p-2 md:p-4 flex  flex-col overflow-auto scrollbar-hide h-full">
+    <Helmet>
+      <title>ዒልም ፈላጊ</title>
+      <meta name="description" content="ተቀርተው ያለቁ ደርሶች በሱና ኡስታዞች በአማረኛ። ዐቂዳ፣ ሀዲስ፣ ፊቅሂ ወዘተ..." />
+    </Helmet>
     <div className="flex-1 ">
       {
         catIsLoading ? <></> :

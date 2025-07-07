@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useResult } from "../Controller/resultController.jsx";
 import * as Api from "../repo/resultRepo.js"; // Adjust the import path as necessary
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 
 export default function ResultPage() {
@@ -56,16 +57,16 @@ export default function ResultPage() {
   const currentPage = parseInt(query.get("page")) || 1;
   console.log("Current Page:", currentPage);
 
-  useEffect(()=>{
-    document.title = "ዒልም ፈላጊ"
-  })
-
   useEffect(() => {
     setPage(currentPage);
     // getCourses();
   }, [currentPage]);
 
   return <div className="p-2 md:p-4 flex flex-col overflow-auto scrollbar-hide h-full">
+    <Helmet>
+        <title>ዒልም ፈላጊ</title>
+        <meta name="description" content="ተቀርተው ያለቁ ደርሶች በሱና ኡስታዞች በአማረኛ። ዐቂዳ፣ ሀዲስ፣ ፊቅሂ ወዘተ..." />
+    </Helmet>
     <div className="flex-1 ">
       <h1 className="text-2xl pt-4 font-bold pb-2">{getVal()}</h1>
       {
