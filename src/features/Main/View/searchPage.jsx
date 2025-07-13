@@ -31,9 +31,9 @@ export default function SearchPage() {
         keepPreviousData: true,
     });
 
-    useEffect(()=>{
-        document.title = `${query.get("q")} - ዒልም ፈላጊ Search`
-    })
+    // useEffect(()=>{
+    //     document.title = `${query.get("q")} - ዒልም ፈላጊ Search`
+    // })
 
     useEffect(() => {
         if(data){
@@ -54,7 +54,7 @@ export default function SearchPage() {
 
     return <div className="p-2 md:p-4 flex flex-col overflow-auto scrollbar-hide h-full">
         <Helmet>
-            <title>ዒልም ፈላጊ</title>
+            <title>{query.get("q")} - ዒልም ፈላጊ Search</title>
             <meta name="description" content="ተቀርተው ያለቁ ደርሶች በሱና ኡስታዞች በአማረኛ። ዐቂዳ፣ ሀዲስ፣ ፊቅሂ ወዘተ..." />
         </Helmet>
         <div className="flex-1 ">

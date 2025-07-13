@@ -19,7 +19,7 @@ const CourseItem = ({course, onFavClick}) => {
     //     state={{ course }}
     //     className="block"
     // >
-        <div  className="bg-white  dark:bg-gray-800 rounded-xl overflow-hidden shadow hover:shadow-lg transition group">
+        <div  className="bg-bg1-light dark:bg-gray-800 rounded-xl overflow-hidden shadow hover:shadow-lg transition group">
             <div className="relative aspect-video overflow-hidden h-40 w-full">
                 {/* Blurred Background */}
                 <img

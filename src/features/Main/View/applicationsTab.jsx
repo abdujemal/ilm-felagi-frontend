@@ -16,7 +16,7 @@ const ApplicationsTab = () => {
 
   return (
     <div className=''>
-      <h1 className='text-2xl'>አፕልኬሽኖች</h1>
+      <h1 className='text-2xl'>መተግበርያዎች</h1>
       <div className=' flex bg-card pt-10 md:p-10 justify-evenly'>
             <div className='bg-card-light p-10 md:p-24 gap-2 rounded-2xl shadow-lg flex flex-col items-center justify-center dark:bg-card-dark'>
               <div className='p-4 rounded-full border'>

@@ -121,18 +121,18 @@ export default function SidebarLayout() {
             )}
           >
             <nav className="space-y-2">
-              <NavLink to="/" end className={navLinkClass}><IconHome className={`w-4 ${textStyle}`}/><p className={textStyle}>Home</p></NavLink>
-              <NavLink to="/fav" className={navLinkClass} ><IconBookmark className={`w-4 ${textStyle}`}/><p className={textStyle}>Fav</p></NavLink>
+              <NavLink to="/" end className={navLinkClass}><IconHome className={`w-4 ${textStyle}`}/><p className={textStyle}>ደርሶች</p></NavLink>
+              <NavLink to="/fav" className={navLinkClass} ><IconBookmark className={`w-4 ${textStyle}`}/><p className={textStyle}>የተመረጡ</p></NavLink>
               {/* <NavLink to="/contents" className={navLinkClass} ><IconListLetters className={`w-4 ${textStyle}`}/><p className={textStyle}>Contents</p></NavLink> */}
-              <NavLink to="/ustazs" className={navLinkClass} ><IconChalkboardTeacher className={`w-4 ${textStyle}`}/><p className={textStyle}>Ustazs</p></NavLink>
-              <NavLink to="/startedCourses" className={navLinkClass} ><IconBrandParsinta className={`w-4 ${textStyle}`}/><p className={textStyle}>Started Courses</p></NavLink>
+              <NavLink to="/ustazs" className={navLinkClass} ><IconChalkboardTeacher className={`w-4 ${textStyle}`}/><p className={textStyle}>ኡስታዞች</p></NavLink>
+              <NavLink to="/startedCourses" className={navLinkClass} ><IconBrandParsinta className={`w-4 ${textStyle}`}/><p className={textStyle}>የተጀመሩ</p></NavLink>
               {/* <NavLink to="/settings" className={navLinkClass} ><IconSettings className={`w-4 ${textStyle}`}/><p className={textStyle}>Settings</p></NavLink> */}
               {/* <hr className="border border-nav-light dark:border-nav-dark"/> */}
               <hr className="my-6 border-t [border-width:0.2px] border-gray-300 dark:border-gray-700" />
-              <NavLink to="/about" className={navLinkClass} ><IconInfoCircle className={`w-4 ${textStyle}`}/><p className={textStyle}>About</p></NavLink>
-              <NavLink to="/faq" className={navLinkClass} ><IconHelpOctagon className={`w-4 ${textStyle}`}/><p className={textStyle}>FAQ</p></NavLink>
-              <NavLink to="https://t.me/MOhamedAljawi" target="_blank" className={navLinkClass} ><IconBrandTelegram className={`w-4 ${textStyle}`}/><p className={textStyle}>Our Platform on Telegram</p></NavLink>
-              <NavLink to="/applications" className={navLinkClass} ><IconCategory className={`w-4 ${textStyle}`}/><p className={textStyle}>Applications</p></NavLink>
+              <NavLink to="/about" className={navLinkClass} ><IconInfoCircle className={`w-4 ${textStyle}`}/><p className={textStyle}>ስለኛ</p></NavLink>
+              <NavLink to="/faq" className={navLinkClass} ><IconHelpOctagon className={`w-4 ${textStyle}`}/><p className={textStyle}>መረጃ</p></NavLink>
+              <NavLink to="https://t.me/MOhamedAljawi" target="_blank" className={navLinkClass} ><IconBrandTelegram className={`w-4 ${textStyle}`}/><p className={textStyle}>የቴሌግራም ቻናላችን</p></NavLink>
+              <NavLink to="/applications" className={navLinkClass} ><IconCategory className={`w-4 ${textStyle}`}/><p className={textStyle}>መተግበርያዎች</p></NavLink>
               <div className="md:hidden ml-3 mr-3">
                 <Button icon={darkMode ? <IconSunFilled/> : <IconMoonStars/>} onClick={toggleTheme}/>
               </div>

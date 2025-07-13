@@ -33,7 +33,7 @@ export default {
           dark: "#B4CED5", 
         },
         bg1: {
-          light: "#f8f7f9",
+          light: "#FEFEEF",
           dark: "#292e33", // you can customize this dark background
         },
         bg:{

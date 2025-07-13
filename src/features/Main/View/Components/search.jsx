@@ -34,7 +34,7 @@ function SearchUI() {
             name='q'
             type="text"
             placeholder="ፈልግ..."
-            className="w-full p-2 pr-10 bg-input_bg-light dark:bg-input_bg-dark border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-primary-light dark:focus:ring-primary-dark"
+            className="w-full p-2 pr-10 bg-button-light dark:bg-button-dark border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-1 focus:ring-primary-light dark:focus:ring-primary-dark"
         />
 
         {/* Button floating on top-right */}
