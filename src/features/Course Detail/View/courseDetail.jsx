@@ -78,9 +78,10 @@ const CourseDetail = () => {
     }
 
     const calculatePercentage = ()=>{
-        const avgDuration = Number(course?.totalDuration) / Number(course?.courseIds.split(",").length);
+        const avgDuration = Number(course?.totalDuration) / Number(String(course?.courseIds).split(",").length);
         const duraion = Number(course?.duration) + (avgDuration * course?.currentIndex);
         return ((duraion / course?.totalDuration) * 100).toFixed(2);
+        
     }
 
     

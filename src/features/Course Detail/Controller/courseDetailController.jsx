@@ -25,12 +25,18 @@ export const CourseDetailProvider = ({ children }) => {
 
     Api.getSingleCourse(id)
       .then((data) => {
+        if(data.length === 0){
+          setError("የተመረጠ ኮርስ አልተገኘም");
+          setLoading(false);
+          return;
+        }
+        data = data[0];
         const course = getCoursesFromLocalStorage().find((v, i, a) => v._id === data._id);
         if (course) {
           data.currentIndex = course.currentIndex;
           data.duration = course.duration;
           data.fav = course.fav;
-        } 
+        }
         setCourse(data);
         document.title = `${data.title} በ${data.ustaz}`;
         setLoading(false);
