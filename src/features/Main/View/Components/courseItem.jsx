@@ -33,7 +33,7 @@ const CourseItem = ({course, onFavClick}) => {
                   <img
                       src={course.image}
                       alt={course.title}
-                      onClick={()=>navigate(`/details/${course._id}`, { state: { course } })} 
+                      onClick={()=>navigate(`/details/${course.courseId}`, { state: { course } })} 
                       className="max-h-full max-w-full cursor-pointer object-contain rounded transition-transform duration-300 ease-in-out group-hover:scale-125"
                   />
                 </div>
@@ -69,7 +69,7 @@ const CourseItem = ({course, onFavClick}) => {
             {/* Text Content */}
             <div className=" flex  pt-2 pb-2 px-4">
               <div className=' flex-1'>
-                <h3 onClick={()=>navigate(`/details/${course._id}`, {state: {course}})} className="text-lg cursor-pointer hover:text-primary-light hover:dark:text-primary-dark hover:underline font-semibold mb-1 text-gray-900 dark:text-white">
+                <h3 onClick={()=>navigate(`/details/${course.courseId}`, {state: {course}})} className="text-lg cursor-pointer hover:text-primary-light hover:dark:text-primary-dark hover:underline font-semibold mb-1 text-gray-900 dark:text-white">
                   {course.title}
                 </h3>
                 <p onClick={()=>navigate(`/result?ustaz=${course.ustaz}`)} className="text-sm cursor-pointer hover:text-primary-light hover:dark:text-primary-dark hover:underline text-gray-600 dark:text-gray-300">በ{course.ustaz}</p>
